@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.limx.LimxController;
 import com.example.demo.test1.TestController;
+import com.limx.annotation.EnableRegisterServer;
 import com.limx.entity.Simple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -9,7 +10,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
-import org.springframework.context.ApplicationEventPublisher;
 
 /**
  * @author limx

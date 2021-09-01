@@ -1,12 +1,7 @@
 package com.limx.config;
 
-import com.limx.entity.Simple;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-
 /**
+ * 标记类，无实际意义
  * 1、创建自动生成声明 new Object.var
  * 2、Alt+Insert     生成代码(如get,set方法,构造函数等)
  * 或者右键（Generate）
@@ -25,17 +20,5 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author 麦田科技 2021/9/1
  */
-//实现热插拔技术通过注解定义配置类是否生效
-@Configuration
-public class MyAutoConfiguration {
-	static {
-		System.out.println("MyAutoConfiguration init......");
-	}
-
-
-	@Bean
-	@ConditionalOnBean(ConfigMarker.class)
-	public Simple simple(){
-		return new Simple();
-	}
+public class ConfigMarker {
 }
