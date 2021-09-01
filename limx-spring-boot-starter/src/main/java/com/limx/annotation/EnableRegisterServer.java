@@ -25,9 +25,8 @@ import java.lang.annotation.*;
  *
  * @author 麦田科技 2021/9/1
  */
-@Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(ConfigMarker.class)
+@Import({ConfigMarker.class})
 public @interface EnableRegisterServer {
 }

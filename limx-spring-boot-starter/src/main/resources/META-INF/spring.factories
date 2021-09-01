@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.limx.entity.Simple
+  com.limx.config.MyAutoConfiguration

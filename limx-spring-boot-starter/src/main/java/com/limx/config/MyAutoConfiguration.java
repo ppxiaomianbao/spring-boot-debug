@@ -3,7 +3,6 @@ package com.limx.config;
 import com.limx.entity.Simple;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -27,6 +26,7 @@ import org.springframework.context.annotation.Configuration;
  */
 //实现热插拔技术通过注解定义配置类是否生效
 @Configuration
+@ConditionalOnBean({ConfigMarker.class})
 public class MyAutoConfiguration {
 	static {
 		System.out.println("MyAutoConfiguration init......");
@@ -34,7 +34,6 @@ public class MyAutoConfiguration {
 
 
 	@Bean
-	@ConditionalOnBean(ConfigMarker.class)
 	public Simple simple(){
 		return new Simple();
 	}

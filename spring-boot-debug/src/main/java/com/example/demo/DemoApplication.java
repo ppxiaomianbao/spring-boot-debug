@@ -17,6 +17,7 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 @SpringBootApplication(
 		//此属性是配置要扫描的包,注意，针对的是加上了@Controller、@Service、@Repository、@Configuration
 		scanBasePackages = {"com.example.demo.limx"}, exclude = FreeMarkerAutoConfiguration.class)
+@EnableRegisterServer
 public class DemoApplication implements ApplicationRunner {
 	@Autowired(required = false)
 	private TestController testController;
