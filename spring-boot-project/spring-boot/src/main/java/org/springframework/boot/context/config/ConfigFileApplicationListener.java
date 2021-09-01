@@ -74,7 +74,7 @@ import org.springframework.util.StringUtils;
  * {@link EnvironmentPostProcessor} that configures the context environment by loading
  * properties from well known file locations. By default properties will be loaded from
  * 'application.properties' and/or 'application.yml' files in the following locations:
- * <ul>
+ * <ul>  ============>可读取配置文件路径 及 加载顺序
  * <li>file:./config/</li>
  * <li>file:./</li>
  * <li>classpath:config/</li>

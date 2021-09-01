@@ -45,19 +45,20 @@ import org.springframework.data.repository.Repository;
  * @author Andy Wilkinson
  * @since 1.2.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@SpringBootConfiguration
-@EnableAutoConfiguration
+@Target(ElementType.TYPE)//注解的适用范围，Type表示注解可以描述在类、接口、注解或枚举中
+@Retention(RetentionPolicy.RUNTIME)	//表示注解的生命周期，RUNTIME表示运行时
+@Documented	//表示注解可以记录在javadoc中
+@Inherited	//表示可以被子类继承改注解
+@SpringBootConfiguration	//声明该类为配置类
+@EnableAutoConfiguration	//启动自动配置功能
 @ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
-		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })	//注解扫描
 public @interface SpringBootApplication {
 
 	/**
 	 * Exclude specific auto-configuration classes such that they will never be applied.
 	 * @return the classes to exclude
+	 * 根据class来排除特定的类，使其不能加入spring容器，传入参数value类型是class类型。
 	 */
 	@AliasFor(annotation = EnableAutoConfiguration.class)
 	Class<?>[] exclude() default {};

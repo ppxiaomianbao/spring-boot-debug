@@ -87,19 +87,24 @@ public abstract class AutoConfigurationPackages {
 	 * where the package name is set from your {@code @EnableAutoConfiguration}
 	 * configuration class or classes.
 	 * @param registry the bean definition registry
-	 * @param packageNames the package names to set
+	 * @param packageNames the package names to set 要设置的包名称（默认是当前包）
 	 */
 	public static void register(BeanDefinitionRegistry registry, String... packageNames) {
+		//判断 BEAN 是否已经生成BeanDefinition
 		if (registry.containsBeanDefinition(BEAN)) {
 			BeanDefinition beanDefinition = registry.getBeanDefinition(BEAN);
 			ConstructorArgumentValues constructorArguments = beanDefinition.getConstructorArgumentValues();
 			constructorArguments.addIndexedArgumentValue(0, addBasePackages(constructorArguments, packageNames));
 		}
 		else {
+			//如果BEAN 尚未注册，则注册该BEAN
 			GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+			//设置Bean的类型
 			beanDefinition.setBeanClass(BasePackages.class);
+			//设置Bean的构造函数的参数
 			beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0, packageNames);
 			beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
+			//注册Bean定义
 			registry.registerBeanDefinition(BEAN, beanDefinition);
 		}
 	}
