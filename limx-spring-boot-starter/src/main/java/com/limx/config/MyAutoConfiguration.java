@@ -1,6 +1,8 @@
 package com.limx.config;
 
 import com.limx.entity.Simple;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,8 +30,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnBean({ConfigMarker.class})
 public class MyAutoConfiguration {
+	static Logger log = LoggerFactory.getLogger(MyAutoConfiguration.class);
+
 	static {
-		System.out.println("MyAutoConfiguration init......");
+		log.warn("MyAutoConfiguration init......");
 	}
 
 

@@ -10,6 +10,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author limx
@@ -17,7 +19,8 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 @SpringBootApplication(
 		//此属性是配置要扫描的包,注意，针对的是加上了@Controller、@Service、@Repository、@Configuration
 		scanBasePackages = {"com.example.demo.limx"}, exclude = FreeMarkerAutoConfiguration.class)
-@EnableRegisterServer
+//@EnableRegisterServer
+@RestController
 public class DemoApplication implements ApplicationRunner {
 	@Autowired(required = false)
 	private TestController testController;
@@ -39,5 +42,10 @@ public class DemoApplication implements ApplicationRunner {
 		System.out.println("测试自定义starter ===> simple: " + simple);
 	}
 
+
+	@GetMapping("/test")
+	public String test(){
+		return "你好，SpringBoot";
+	}
 
 }
