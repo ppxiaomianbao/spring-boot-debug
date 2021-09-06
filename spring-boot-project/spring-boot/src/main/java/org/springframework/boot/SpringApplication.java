@@ -332,7 +332,10 @@ public class SpringApplication {
 					new Class[] { ConfigurableApplicationContext.class }, context);
 			//【4】 刷新应用上下文前的准备阶段
 			prepareContext(context, environment, listeners, applicationArguments, printedBanner);
-			//【5】 刷新应用上下文
+			//【5】 刷新应用上下文 (自动装配的类在这一步转换为BeanDefinition
+			// 具体实现是 springframework 里【AbstractApplicationContext 抽象类的 invokeBeanFactoryPostProcessors 方法】)
+			// 在具体就是 ConfigurationClassBeanDefinitionReader 类里面的 loadBeanDefinitionsForConfigurationClass 方法 里面的
+			//trackedConditionEvaluator.shouldSkip  ==》 可以设置一个断点测试一下，做一个配置类，适用条件注解让他加载不进来，这个方法会排除掉不加载的类
 			refreshContext(context);
 			//【6】 刷新应用上下文后的扩展接口
 			afterRefresh(context, applicationArguments);
@@ -426,6 +429,7 @@ public class SpringApplication {
 	}
 
 	private void refreshContext(ConfigurableApplicationContext context) {
+		// todo 自动装配的类在这个方法里转换为BeanFefinition
 		refresh(context);
 		if (this.registerShutdownHook) {
 			try {
